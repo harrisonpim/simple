@@ -1,2 +1,3 @@
-# simple
-limit your writing to 1000 words
+# simple ✏️
+
+write simply, with 1000 simple words
