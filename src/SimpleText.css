@@ -1,6 +1,13 @@
-textarea {
+.simpletext {
     border: none;
-    resize: none;
     outline: none;
     width: 100%;
+    padding-bottom: 1rem;
+    text-transform: lowercase;
+}
+
+[contenteditable=true]:empty:before {
+    content: attr(placeholder);
+    pointer-events: none;
+    color: #999999;
 }

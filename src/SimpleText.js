@@ -14,10 +14,11 @@ class SimpleText extends Component {
 
   render() {
     return (
-      <textarea
+      <div
+        contentEditable="true"
         placeholder={this.props.placeholder}
         onChange={this.handleChange}
-        className={this.props.className}
+        className={"simpletext " + this.props.className}
       />
     );
   }
