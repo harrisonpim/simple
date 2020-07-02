@@ -1,19 +1,27 @@
 import React, { Component } from "react";
-import SimpleText from "./SimpleText";
+import Simple from "./Simple";
+import { vocabulary } from "./data.json";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { vocabulary: vocabulary };
+  }
+
   render() {
     return (
-      <div className="pa3 pa5-ns black-80 sans-serif">
-        <SimpleText
-          placeholder="write a simple title here"
-          className="f3 f1-m f-headline-l lh-title b"
+      <div className="pv4 ph4 ph5-l black-80 sans-serif vh-100">
+        <Simple
+          placeholder="write some big, simple words for the top"
+          className="f2 f1-l lh-title b"
           wordLimit={10}
+          vocabulary={this.state.vocabulary}
         />
-        <SimpleText
-          placeholder="write 1000 simple words here"
-          className="lh-copy"
+        <Simple
+          placeholder="write some more simple words down here"
+          className="f4 lh-copy measure-wide"
           wordLimit={1000}
+          vocabulary={this.state.vocabulary}
         />
       </div>
     );
