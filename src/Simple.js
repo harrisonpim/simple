@@ -36,14 +36,13 @@ class Simple extends Component {
         // check whether the token is in the vocabulary
         let cleanToken = token.replace(
           RegExp(`[${this.state.punctuation.join("")}]`, "g"),
-          ""
+          " "
         );
         if (this.state.vocabulary.includes(token)) {
           labelledTokens.push(token);
         } else if (this.state.vocabulary.includes(cleanToken)) {
           labelledTokens.push(token);
         } else {
-          // console.log(`${cleanToken} not in vocabulary`);
           labelledTokens.push(`<span>${token}</span>`);
         }
       }

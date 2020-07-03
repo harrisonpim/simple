@@ -4,6 +4,8 @@
 
 write simply, by only using ten-hundred simple words
 
+![example](example.png)
+
 ## why
 
 i thought about doing this because of [the drawing guy](https://xkcd.com/)'s [drawing about up-goers](https://xkcd.com/1133/).
