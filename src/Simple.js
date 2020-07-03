@@ -25,19 +25,27 @@ class Simple extends Component {
   }
 
   labelTokens(tokens) {
-    // loop through tokens and if they're invalid, wrap them in a <span />
+    // loop through the tokens. if they're invalid, wrap them in a <span />
     let labelledTokens = [];
     for (var i = 0; i < tokens.length; i++) {
       let token = tokens[i];
-      if (this.state.vocabulary.includes(token)) {
-        labelledTokens.push(token);
-      } else if (
-        this.state.vocabulary.includes(token.slice(0, -1)) &
-        this.state.punctuation.includes(token.slice(-1))
-      ) {
-        labelledTokens.push(token);
-      } else {
+      // first, check whether we're within the word limit
+      if (i >= this.props.wordLimit) {
         labelledTokens.push(`<span>${token}</span>`);
+      } else {
+        // check whether the token is in the vocabulary
+        let cleanToken = token.replace(
+          RegExp(`[${this.state.punctuation.join("")}]`, "g"),
+          ""
+        );
+        if (this.state.vocabulary.includes(token)) {
+          labelledTokens.push(token);
+        } else if (this.state.vocabulary.includes(cleanToken)) {
+          labelledTokens.push(token);
+        } else {
+          // console.log(`${cleanToken} not in vocabulary`);
+          labelledTokens.push(`<span>${token}</span>`);
+        }
       }
     }
     return labelledTokens;
