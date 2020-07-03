@@ -13,6 +13,7 @@ class Simple extends Component {
       vocabulary: vocabulary.concat(emoji),
     };
     this.handleChange = this.handleChange.bind(this);
+    this.inVocabulary = this.inVocabulary.bind(this);
   }
 
   tokenise(inputHTML) {
@@ -22,6 +23,10 @@ class Simple extends Component {
       allowedAttributes: {},
     }).toLowerCase();
     return cleanText.split(" ");
+  }
+
+  inVocabulary(token) {
+    return this.state.vocabulary.includes(token);
   }
 
   labelTokens(tokens) {
@@ -34,13 +39,18 @@ class Simple extends Component {
         labelledTokens.push(`<span>${token}</span>`);
       } else {
         // check whether the token is in the vocabulary
-        let cleanToken = token.replace(
-          RegExp(`[${this.state.punctuation.join("")}]`, "g"),
-          " "
+        let punctuationRegex = RegExp(
+          `[${this.state.punctuation.join("")}]`,
+          "g"
         );
-        if (this.state.vocabulary.includes(token)) {
+        let cleanToken = token.replace(punctuationRegex, "");
+        let subTokens = token.replace(punctuationRegex, " ").split(" ");
+        console.log(subTokens);
+        if (this.inVocabulary(token)) {
           labelledTokens.push(token);
-        } else if (this.state.vocabulary.includes(cleanToken)) {
+        } else if (this.inVocabulary(cleanToken)) {
+          labelledTokens.push(token);
+        } else if (subTokens.every(this.inVocabulary)) {
           labelledTokens.push(token);
         } else {
           labelledTokens.push(`<span>${token}</span>`);
