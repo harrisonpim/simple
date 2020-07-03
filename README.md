@@ -4,7 +4,7 @@
 
 write simply, by only using ten-hundred simple words
 
-![example](example.png)
+![example](example1.png) ![example](example2.png)
 
 ## why
 
