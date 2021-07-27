@@ -10,7 +10,7 @@
     "react-contenteditable": "^3.3.5",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
-    "sanitize-html": "^1.27.0"
+    "sanitize-html": "^2.3.2"
   },
   "scripts": {
     "start": "react-scripts start",
